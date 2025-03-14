@@ -1,0 +1,59 @@
+<div class="flex flex-col items-center">
+    <h1>Plate Calculator</h1>
+    <div>
+        <label for="target">Target weight</label>
+        <input type="number" id="target" value="100" step="0.5" min="0"/>
+    </div>
+    <div>
+        <label for="bar">Bar weight</label> 
+        <input type="number" id="bar" value="20" step="0.5" min="0"/>
+    </div>
+    <div>
+        <label for="collars">Collars weight</label>
+        <input type="number" id="collars" value="0" step="0.5" min="0"/>
+    </div>
+    <div>
+        <label for="reds">25 kg plates</label>
+        <input type="number" id="reds" value="0" step="2" min="0"/>
+    </div>
+    <div>
+        <label for="blues">20 kg plates</label>
+        <input type="number" id="blues" value="6" step="2" min="0"/>
+    </div>
+    <div>
+        <label for="yellows">15 kg plates</label>
+        <input type="number" id="yellows" value="0" step="2" min="0"/>
+    </div>
+    <div>
+        <label for="greens">10 kg plates</label>
+        <input type="number" id="greens" value="2" step="2" min="0"/>
+    </div>
+    <div>
+        <label for="fives">5 kg plates</label>
+        <input type="number" id="fives" value="4" step="2" min="0"/>
+    </div>
+    <div>
+        <label for="twohalves">2.5 kg plates</label>
+        <input type="number" id="twohalves" value="4" step="2" min="0"/>
+    </div>
+    <div>
+        <label for="frac">1.25 kg plates</label>
+        <input type="number" id="frac" value="4" step="2" min="0"/>
+    </div>
+    <div>
+        <label for="frac-half">Fractional 0.5 kg</label>
+        <input type="number" id="frac-half" value="2" step="2" min="0"/>
+    </div>
+    <div>
+        <label for="frac-quarter">Fractional 0.25 kg</label>
+        <input type="number" id="frac-quarter" value="2" step="2" min="0"/>
+    </div>
+    <button id="plate-calculate">Calculate</button>
+    <div id="plate-result" style="display: none;">
+        <h2>Result</h2>
+        <p id="plate-result-content"></p>
+    </div>
+    <div class="flex justify-center">
+        <canvas id="plate-diagram" class="border-2 mt-2" width="600" height="200"></canvas>
+    </div>
+</div>

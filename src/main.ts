@@ -1,24 +1,30 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import { PlateForm, plateInit } from './plate'; 
+import { e1RMInit } from './e1rm';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+function loadContent(page: string) {
+  const contentDiv = document.getElementById('content'); 
+  if (contentDiv) {
+    fetch(`${page}.html`)
+      .then(response => response.text())
+      .then(data => {
+        contentDiv.innerHTML = data; 
+        if (page === 'plate') {
+          let form: PlateForm = { target: 0, bar: 0, collars: 0, reds: 0, blues: 0, yellows: 0, greens: 0, fives: 0, twohalves: 0, frac: 0, fracHalves: 0, fracQuarters: 0 };
+          plateInit(form);
+        } else if (page === 'e1rm') {
+          e1RMInit();
+        }
+        
+      })
+      .catch(error => console.error(error));
+  }
+}
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+function handlePageChange() {
+  const hash = window.location.hash.substring(1); 
+  const page = hash || 'home';
+  loadContent(page);
+}
+
+window.addEventListener('hashchange', handlePageChange);
+window.addEventListener('load', handlePageChange);
